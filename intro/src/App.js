@@ -4,6 +4,8 @@ import CategoryList from "./CategoryList";
 import ProductList from "./ProductList";
 import { Container, Row, Col } from "reactstrap";
 function App() {
+  let productInfo = {title:"Product List", baskaBisey:"bisey"}
+  let categoryInfo = {title: "Category List"}
   return (
     <div>
       <Container>
@@ -14,10 +16,10 @@ function App() {
 
         <Row>
           <Col xs="3">
-          <CategoryList title="Category List"/>
+            <CategoryList info={categoryInfo}/>
           </Col>
           <Col xs="9">
-            <ProductList title="Product List"/>
+            <ProductList info={productInfo}/>
           </Col>
           
           
