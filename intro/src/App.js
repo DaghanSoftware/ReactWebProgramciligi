@@ -10,10 +10,14 @@ export default class App extends Component {
   }
   changeCategory = (category)=>{
     this.setState({currentCategory:category.CategoryName})
+    this.getProducts(category.CategoryID);
   };
-  
-  getProducts = ()=>{
-    fetch("http://localhost:3000/products").then(Response=>Response.json()).then(data=>this.setState({products:data}));
+  getProducts = (categoryId)=>{
+    let url ="http://localhost:3000/products";
+    if(categoryId){
+      url+= "?categoryId=" +categoryId;
+    }
+    fetch(url).then(Response=>Response.json()).then(data=>this.setState({products:data}));
   }
 
   render() {
@@ -28,7 +32,10 @@ export default class App extends Component {
 
           <Row>
             <Col xs="3">
-              <CategoryList currentCategory={this.state.currentCategory} changeCategory={this.changeCategory} info={categoryInfo} />
+              <CategoryList
+               currentCategory={this.state.currentCategory}
+               changeCategory={this.changeCategory}
+               info={categoryInfo} />
             </Col>
             <Col xs="9">
               <ProductList 

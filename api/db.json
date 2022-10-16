@@ -661,42 +661,51 @@
         {
           "CategoryID": 1,
           "CategoryName": "Beverages",
-          "Description": "Soft drinks coffees teas beers and ales"
+          "Description": "Soft drinks coffees teas beers and ales",
+          "seoUrl":"beverages"
         },
         {
           "CategoryID": 2,
           "CategoryName": "Condiments",
-          "Description": "Sweet and savory sauces relishes spreads and seasonings"
+          "Description": "Sweet and savory sauces relishes spreads and seasonings",
+          "seoUrl":"condiments"
+          
         },
         {
           "CategoryID": 3,
           "CategoryName": "Confections",
-          "Description": "Desserts candies and sweet breads"
+          "Description": "Desserts candies and sweet breads",
+          "seoUrl":"confections"
         },
         {
           "CategoryID": 4,
           "CategoryName": "Dairy Products",
-          "Description": "Cheeses"
+          "Description": "Cheeses",
+          "seoUrl":"dairy-products"
         },
         {
           "CategoryID": 5,
           "CategoryName": "Grains/Cereals",
-          "Description": "Breads crackers pasta and cereal"
+          "Description": "Breads crackers pasta and cereal",
+          "seoUrl":"grains-cereals"
         },
         {
           "CategoryID": 6,
           "CategoryName": "Meat/Poultry",
-          "Description": "Prepared meats"
+          "Description": "Prepared meats",
+          "seoUrl":"meat-poultry"
         },
         {
           "CategoryID": 7,
           "CategoryName": "Produce",
-          "Description": "Dried fruit and bean curd"
+          "Description": "Dried fruit and bean curd",
+          "seoUrl":"produce"
         },
         {
           "CategoryID": 8,
           "CategoryName": "Seafood",
-          "Description": "Seaweed and fish"
+          "Description": "Seaweed and fish",
+          "seoUrl":"seafood"
         }
       ]
   }
