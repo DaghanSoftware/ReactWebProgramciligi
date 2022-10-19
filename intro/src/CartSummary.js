@@ -4,6 +4,7 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
+  Badge,
 } from "reactstrap";
 
 export default class CartSummary extends Component {
@@ -16,7 +17,10 @@ export default class CartSummary extends Component {
           </DropdownToggle>
           <DropdownMenu right>
             {this.props.cart.map((cartItem) => (
-              <DropdownItem key={cartItem.product.id}>{cartItem.product.ProductName}</DropdownItem>
+              <DropdownItem key={cartItem.product.id}>
+                {cartItem.product.ProductName}
+                <Badge color="success">{cartItem.quantity}</Badge>
+              </DropdownItem>
             ))}
 
             <DropdownItem divider />
