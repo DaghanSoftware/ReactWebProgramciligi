@@ -40,9 +40,10 @@ export default class App extends Component {
     this.setState({ cart: newCart });
     alertify.success(product.ProductName + "added to cart!", 2);
   };
-  removeFromCart = (product) => {
+  removeFromCart = product => {
     let newCart = this.state.cart.filter((c) => c.product.id !== product.id);
     this.setState({ cart: newCart });
+    alertify.error(product.ProductName + "removed from cart!");
   };
   render() {
     let productInfo = { title: "Product List", baskaBisey: "bisey" };
