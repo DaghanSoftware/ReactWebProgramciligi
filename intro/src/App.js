@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import NotFound from "./NotFound";
 import CartList from "./CartList";
+import FormDemo1 from "./FormDemo1";
 export default class App extends Component {
   state = { currentCategory: "ggg", products: [], cart: [] };
   componentDidMount() {
@@ -80,6 +81,9 @@ export default class App extends Component {
                       cart={this.state.cart}
                       removeFromCart={this.removeFromCart}
                     />
+                  } />
+                  <Route exact path="/FormDemo1" element={
+                    <FormDemo1/>
                   } />
                 <Route path="*" element={<NotFound />} />
               </Routes>
