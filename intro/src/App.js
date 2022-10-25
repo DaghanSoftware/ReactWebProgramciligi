@@ -11,6 +11,7 @@ import {
 import NotFound from "./NotFound";
 import CartList from "./CartList";
 import FormDemo1 from "./FormDemo1";
+import FormDemo2 from "./FormDemo2";
 export default class App extends Component {
   state = { currentCategory: "ggg", products: [], cart: [] };
   componentDidMount() {
@@ -41,7 +42,7 @@ export default class App extends Component {
     this.setState({ cart: newCart });
     alertify.success(product.ProductName + "added to cart!", 2);
   };
-  removeFromCart = product => {
+  removeFromCart = (product) => {
     let newCart = this.state.cart.filter((c) => c.product.id !== product.id);
     this.setState({ cart: newCart });
     alertify.error(product.ProductName + "removed from cart!");
@@ -76,15 +77,18 @@ export default class App extends Component {
                     />
                   }
                 />
-                <Route exact path="/cart" element={
+                <Route
+                  exact
+                  path="/cart"
+                  element={
                     <CartList
                       cart={this.state.cart}
                       removeFromCart={this.removeFromCart}
                     />
-                  } />
-                  <Route exact path="/FormDemo1" element={
-                    <FormDemo1/>
-                  } />
+                  }
+                />
+                <Route exact path="/FormDemo1" element={<FormDemo1 />} />
+                <Route exact path="/FormDemo2" element={<FormDemo2 />} />
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </Col>

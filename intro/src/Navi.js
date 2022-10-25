@@ -50,6 +50,11 @@ export default class Navi extends React.Component {
                   <Link to="FormDemo1">Form Demo 1</Link>
                 </NavLink>
               </NavItem>
+              <NavItem>
+                <NavLink>
+                  <Link to="FormDemo2">Form Demo 2</Link>
+                </NavLink>
+              </NavItem>
             </Nav>
           </Collapse>
         </Navbar>
