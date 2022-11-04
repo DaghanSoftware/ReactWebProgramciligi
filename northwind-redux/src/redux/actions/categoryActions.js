@@ -7,8 +7,8 @@ export function changecategory(category) {
   };
 }
 
-export function getCategoriesSuccess(categories){
-  return {type:actionTypes.GET_CATEGORIES_SUCCESS,payload:categories};
+export function getCategoriesSuccess(categories) {
+  return { type: actionTypes.GET_CATEGORIES_SUCCESS, payload: categories };
 }
 
 export function getCategories() {
