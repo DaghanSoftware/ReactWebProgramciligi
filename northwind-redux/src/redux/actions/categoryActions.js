@@ -12,10 +12,10 @@ export function getCategoriesSuccess(categories) {
 }
 
 export function getCategories() {
-  return function (dispatch) {
+  return async (dispatch) => {
     let url = "http://localhost:3000/categories";
     return fetch(url)
-      .then(response => response.json())
-      .then(result => dispatch(getCategoriesSuccess(result)));
+      .then((response) => response.json())
+      .then((result) => dispatch(getCategoriesSuccess(result)));
   };
 }
