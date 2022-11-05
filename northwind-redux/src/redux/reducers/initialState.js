@@ -1,5 +1,5 @@
 export default {
-    currentCategory:{categoryName:"Bevereges"},
+    currentCategory:{CategoryName:"Bevereges"},
     categories:[],
     filterTodos: []
 }

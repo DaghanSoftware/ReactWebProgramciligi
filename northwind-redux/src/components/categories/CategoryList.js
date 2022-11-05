@@ -14,12 +14,12 @@ class CategoryList extends Component {
         <h3>Categories </h3>
         <ListGroup>
           {this.props.categories.map(category => (
-            <ListGroupItem key={category.CategoryID}>
+            <ListGroupItem onClick={()=>this.props.actions.changeCategory(category)} key={category.CategoryID}>
               {category.CategoryName}
             </ListGroupItem>
           ))}
         </ListGroup>
-        <h5>Seçili Kategori : {this.props.currentCategory.categoryName}</h5>
+        <h5>Seçili Kategori : {this.props.currentCategory.CategoryName}</h5>
       </div>
     );
   }
@@ -35,10 +35,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      getCategories: bindActionCreators(
-        categoryActions.getCategories,
-        dispatch
-      ),
+      getCategories: bindActionCreators(categoryActions.getCategories,dispatch),
+      changeCategory:  bindActionCreators(categoryActions.changeCategory,dispatch)
     },
   };
 }
