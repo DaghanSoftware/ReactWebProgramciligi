@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from "react";
 import {
   Collapse,
   Navbar,
@@ -14,17 +14,27 @@ import {
   NavbarText,
 } from 'reactstrap';
 
-function Navi(args) {
-  const [isOpen, setIsOpen] = useState(false);
+class Navi extends React.Component {
+  constructor(props) {
+    super(props);
 
-  const toggle = () => setIsOpen(!isOpen);
-
+    this.toggle = this.toggle.bind(this);
+    this.state = {
+      isOpen: false,
+    };
+  }
+  toggle() {
+    this.setState({
+      isOpen: !this.state.isOpen,
+    });
+  }
+  render(){
   return (
     <div>
-      <Navbar {...args}>
+      <Navbar color="light" light expand="md">
         <NavbarBrand href="/">DaghanDigital</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
+        <NavbarToggler onClick={this.toggle} />
+        <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
               <NavLink href="/components/">Components</NavLink>
@@ -51,6 +61,7 @@ function Navi(args) {
       </Navbar>
     </div>
   );
+}
 }
 
 export default Navi;
