@@ -7,6 +7,7 @@ export default class DashBoard extends Component {
   render() {
     return (
       <div>
+        <br></br>
         <Row>
           <Col xs="3">
             <CategoryList></CategoryList>
