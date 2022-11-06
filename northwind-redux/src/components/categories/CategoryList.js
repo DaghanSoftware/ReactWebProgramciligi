@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as categoryActions from "../../redux/actions/categoryActions";
-import { ListGroup, ListGroupItem } from "reactstrap";
+import { ListGroup, ListGroupItem,Badge } from "reactstrap";
 
 class CategoryList extends Component {
   componentDidMount() {
@@ -14,7 +14,8 @@ class CategoryList extends Component {
   render() {
     return (
       <div>
-        <h3>Categories </h3>
+        
+        <h3><Badge color="warning">Categories</Badge> </h3>
         <ListGroup>
           {this.props.categories.map((category) => (
             <ListGroupItem
