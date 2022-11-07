@@ -11,6 +11,7 @@ import {
   NavLink,
   Badge,
 } from "reactstrap";
+import {Link}  from "react-router-dom";
 class CartSummary extends Component {
   renderEmpty() {
     return (
@@ -36,7 +37,7 @@ class CartSummary extends Component {
           
 
           <DropdownItem divider />
-          <DropdownItem>Sepete Git</DropdownItem>
+          <DropdownItem><Link to={"/cart"}>Sepete Git</Link></DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
     );
