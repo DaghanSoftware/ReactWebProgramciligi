@@ -3,10 +3,12 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as cartActions from "../../redux/actions/cartAction";
 import {Table,Button} from "reactstrap"
+import alertify from "alertifyjs";
 
 class CartDetail extends Component {
     removeFromCart(product){
         this.props.actions.removeFromCart(product);
+        alertify.error(product.ProductName + " sepetten silindi.");
     }
   render() {
     return (
