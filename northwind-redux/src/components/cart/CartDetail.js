@@ -5,6 +5,9 @@ import * as cartActions from "../../redux/actions/cartAction";
 import {Table,Button} from "reactstrap"
 
 class CartDetail extends Component {
+    removeFromCart(product){
+        this.props.actions.removeFromCart(product);
+    }
   render() {
     return (
       <div>
