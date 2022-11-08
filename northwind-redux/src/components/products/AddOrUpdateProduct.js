@@ -1,7 +1,15 @@
 import React,{useEffect,useState} from 'react'
+import { connect } from 'react-redux'
 
-export default function AddOrUpdateProduct() {
-  return (
-    <div>AddOrUpdateProduct</div>
-  )
+function AddOrUpdateProduct( {
+    products,
+    categories,
+    getProducts,
+    getCategories,
+    saveProduct,
+    ...props
+}){
+    
 }
+
+export default AddOrUpdateProduct;
