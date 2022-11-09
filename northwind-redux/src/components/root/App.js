@@ -7,6 +7,7 @@ import {
   Route,
 } from "react-router-dom";
 import CartDetail from "../cart/CartDetail";
+import AddOrUpdateProduct from "../products/AddOrUpdateProduct";
 function App() {
   return (
     <Container>
@@ -15,6 +16,7 @@ function App() {
         <Route exact path="/" element={<DashBoard />} />
         <Route exact path="/product" element={<DashBoard />} />
         <Route exact path="/cart" element={<CartDetail />} />
+        <Route path="/saveproduct/:productId" element={<AddOrUpdateProduct/>} />
       </Routes>
     </Container>
   );
