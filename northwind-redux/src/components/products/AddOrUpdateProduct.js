@@ -58,7 +58,7 @@ export function getProductById(products, productId) {
   return product;
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
   const productId = Fetchevent();
   const product =
     productId && state.productListReducer.length > 0
