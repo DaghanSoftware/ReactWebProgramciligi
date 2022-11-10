@@ -7,7 +7,7 @@ const ProductDetail = (categories, product, onSave, onChange) => {
       <form onSubmit={onSave}>
         <h2>{product.id ? "Güncelle" : "Ekle"}</h2>
         <TextInput
-          name="productName"
+          name="ProductName"
           label="Product Name"
           value={product.ProductName}
           onchange={onChange}

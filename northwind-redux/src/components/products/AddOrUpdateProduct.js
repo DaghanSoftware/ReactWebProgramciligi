@@ -3,6 +3,15 @@ import { connect } from "react-redux";
 import { getCategories } from "../../redux/actions/categoryActions";
 import { saveProduct } from "../../redux/actions/productActions";
 import ProductDetail from "./ProductDetail";
+import { useParams } from "react-router-dom";
+
+const Fetchevent = () => {
+  const{productId}=useParams();
+  return{
+    productId
+  }
+}
+
 function AddOrUpdateProduct({
   products,
   categories,
@@ -31,7 +40,7 @@ function AddOrUpdateProduct({
   function handleSave(event) {
     event.preventDefault();
     saveProduct(product).then(() => {
-      history.push("/");
+      history.push("/")
     });
   }
 
@@ -39,18 +48,18 @@ function AddOrUpdateProduct({
     <ProductDetail
       product={product}
       categories={categories}
-      onChange={handleChange}
       onSave={handleSave}
+      onChange={handleChange}
     />
   );
 }
 export function getProductById(products, productId) {
-  let product = products.find(product => product.id === productId) || null;
+  let product = products.find((product) => product.id === productId) || null;
   return product;
 }
 
 function mapStateToProps(state, ownProps) {
-  const productId = ownProps.match.params.productId;
+  const productId = Fetchevent();
   const product =
     productId && state.productListReducer.length > 0
       ? getProductById(state.productListReducer, productId)
@@ -58,7 +67,7 @@ function mapStateToProps(state, ownProps) {
   return {
     product,
     products: state.productListReducer,
-    categories: state.categoryListReducer
+    categories: state.categoryListReducer,
   };
 }
 
@@ -66,5 +75,4 @@ const mapDispatchToProps = {
   getCategories,
   saveProduct,
 };
-
 export default connect(mapStateToProps, mapDispatchToProps)(AddOrUpdateProduct);

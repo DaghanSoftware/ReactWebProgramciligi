@@ -8,7 +8,7 @@ const TextInput = ({ name, label, onChange, placeHolder, value, error }) => {
 
   return (
     <div className={wrapperClass}>
-      <label htmlFor={name}></label>
+      <label htmlFor={name} />
       <div className="field">
         <input
           type="text"
@@ -17,8 +17,8 @@ const TextInput = ({ name, label, onChange, placeHolder, value, error }) => {
           placeholder={placeHolder}
           value={value}
           onChange={onChange}
-        ></input>
-        {error&&<div className="alert alert-danger">{error}</div>}
+        />
+        {error && <div className="alert alert-danger">{error}</div>}
       </div>
     </div>
   );
