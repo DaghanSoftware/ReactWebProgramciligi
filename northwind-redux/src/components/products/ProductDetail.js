@@ -50,7 +50,7 @@ const ProductDetail = ({ categories, product, onSave, onChange }) => {
         ></TextInput>
 
         <button type="submit" className="btn btn-success">
-          Save
+          Kaydet
         </button>
       </form>
     </div>
