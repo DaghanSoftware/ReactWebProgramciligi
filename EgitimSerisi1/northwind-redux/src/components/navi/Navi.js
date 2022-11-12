@@ -30,7 +30,7 @@ class Navi extends React.Component {
   return (
     <div>
       <Navbar color="dark" dark expand="md">
-        <NavbarBrand><Link to="/">DaghanDigital</Link></NavbarBrand>
+        <NavbarBrand><Link to="/product">DaghanDigital</Link></NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="me-auto" navbar>
@@ -44,9 +44,9 @@ class Navi extends React.Component {
                 <Link to="/saveproduct">Ürün Ekle</Link>
               </NavLink>
             </NavItem>
-            <CartSummary></CartSummary>
+            
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
+          <NavbarText><Nav className="me-auto" navbar><CartSummary></CartSummary></Nav></NavbarText>
         </Collapse>
       </Navbar>
     </div>

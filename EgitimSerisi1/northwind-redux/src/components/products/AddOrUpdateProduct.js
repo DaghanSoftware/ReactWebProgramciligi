@@ -33,7 +33,7 @@ function AddOrUpdateProduct({
     const { name, value } = event.target;
     setProduct((previousProduct) => ({
       ...previousProduct,
-      [name]: name === "categoryId" ? parseInt(value, 10) : value,
+      [name]: name === "categoryId" ? parseInt(value, 10) : value
     }));
   }
 
