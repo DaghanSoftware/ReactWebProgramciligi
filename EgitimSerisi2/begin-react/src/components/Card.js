@@ -18,4 +18,7 @@ const Card = (props) => {
   );
 };
 
+Card.defaultProps = {
+  cardTitle : "Default Card Title"
+}
 export default Card;

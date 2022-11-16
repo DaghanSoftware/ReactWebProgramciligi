@@ -8,7 +8,6 @@ function App() {
           <div className="col">
             <Collapse href="collapseExample1">
               <Card
-                cardTitle="Html Giriş"
                 cardText="Last updated 5 mins ago"
                 updatedTime="Last updated 3 mins ago"
                 image="https://picsum.photos/id/1/100/200"
