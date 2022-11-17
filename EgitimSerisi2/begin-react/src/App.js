@@ -4,7 +4,7 @@ function App() {
   return (
     <div className="container">
       <div className="row">
-        <div class="card-group w-100">
+        <div className="card-group w-100">
           <div className="col">
             <Collapse>
               <Card

@@ -9,24 +9,35 @@ class Collapse extends Component {
     };
     //this.showMore = this.showMore.bind(this)
   }
-  showMore=()=>{
-    this.setState({showContent:!this.state.showContent})
+  showMore = () => {
+    this.setState({ showContent: !this.state.showContent });
+  };
+
+  componentDidMount() {
+    console.log("Component oluşturuldu");
   }
-  componentDidMount(){
-    console.log('Component oluşturuldu')
-  }
-  componentDidUpdate(){
-    console.log('Component Güncellendi')
+
+  componentDidUpdate() {
+    console.log("Component Güncellendi");
   }
   render() {
     return (
       <div>
         <p>
-          <button class="btn btn-primary w-100" onClick={this.showMore}>Link with href</button>
+          <button className="btn btn-primary w-100" onClick={this.showMore}>
+            {/* {this.props.children.props.cardTitle} */}
+            {React.Children.map(
+              this.props.children,
+              (children) => children.props.cardTitle
+            )}
+          </button>
         </p>
         {this.state.showContent ? (
-          <div class="collapse show">
-            <div class="card card-body">{this.props.children}</div>
+          <div className="collapse show">
+            <div className="card card-body">
+              {/* {this.props.children} */}
+              {React.Children.map(this.props.children,children=>children)}
+              </div>
           </div>
         ) : null}
       </div>
