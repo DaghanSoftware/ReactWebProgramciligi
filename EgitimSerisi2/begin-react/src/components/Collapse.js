@@ -7,14 +7,10 @@ class Collapse extends Component {
     this.state = {
       showContent: false,
     };
+    //this.showMore = this.showMore.bind(this)
   }
   showMore=()=>{
-    if(this.state.showContent){
-      this.setState({showContent:false})
-    }
-    else{
-      this.setState({showContent:true})
-    }
+    this.setState({showContent:!this.state.showContent})
   }
   render() {
     return (
