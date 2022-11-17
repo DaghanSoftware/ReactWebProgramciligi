@@ -12,6 +12,12 @@ class Collapse extends Component {
   showMore=()=>{
     this.setState({showContent:!this.state.showContent})
   }
+  componentDidMount(){
+    console.log('Component oluşturuldu')
+  }
+  componentDidUpdate(){
+    console.log('Component Güncellendi')
+  }
   render() {
     return (
       <div>
