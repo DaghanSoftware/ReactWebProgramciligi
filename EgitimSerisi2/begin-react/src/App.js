@@ -6,7 +6,7 @@ function App() {
       <div className="row">
         <div class="card-group w-100">
           <div className="col">
-            <Collapse href="collapseExample1">
+            <Collapse>
               <Card
                 cardText="Last updated 5 mins ago"
                 updatedTime="Last updated 3 mins ago"
@@ -16,7 +16,7 @@ function App() {
           </div>
 
           <div className="col">
-            <Collapse href="collapseExample2">
+            <Collapse>
               <Card
                 cardTitle="Html Gelişme"
                 cardText="Last updated 10 mins ago"
@@ -27,7 +27,7 @@ function App() {
           </div>
 
           <div className="col">
-            <Collapse href="collapseExample3">
+            <Collapse>
               <Card
                 cardTitle="Html Sonuç"
                 cardText="Last updated 15 mins ago"

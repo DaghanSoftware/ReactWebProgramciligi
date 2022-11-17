@@ -1,36 +1,26 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 class Collapse extends Component {
-  constructor(){
+  constructor() {
     //super kendimiz oluşturduğumuz constructor'ın React.Component içerisinde bulunan constructor içerisnde bulunan tüm özellikleri almamızı sağlıyor
     super();
     this.state = {
-      showContent:"test content"
-    }
+      showContent: false,
+    };
   }
   render() {
     return (
       <div>
         <p>
-          <a
-            class="btn btn-primary w-100"
-            data-bs-toggle="collapse"
-            href={"#".concat(this.props.href)}
-            role="button"
-            aria-expanded="false"
-            aria-controls={this.props.href}
-          >
-            Link with href
-          </a>
+          <a class="btn btn-primary w-100">Link with href</a>
         </p>
-        <div class="collapse show" id={this.props.href}>
-          <div class="card card-body">
-            {this.props.children}
-            {this.state.showContent}
+        {this.state.showContent ? (
+          <div class="collapse show">
+            <div class="card card-body">{this.props.children}</div>
           </div>
-        </div>
+        ) : null}
       </div>
     );
   }
 }
-export default  Collapse;
+export default Collapse;
