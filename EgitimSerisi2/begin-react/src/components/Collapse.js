@@ -8,11 +8,19 @@ class Collapse extends Component {
       showContent: false,
     };
   }
+  showMore=()=>{
+    if(this.state.showContent){
+      this.setState({showContent:false})
+    }
+    else{
+      this.setState({showContent:true})
+    }
+  }
   render() {
     return (
       <div>
         <p>
-          <a class="btn btn-primary w-100">Link with href</a>
+          <button class="btn btn-primary w-100" onClick={this.showMore}>Link with href</button>
         </p>
         {this.state.showContent ? (
           <div class="collapse show">
