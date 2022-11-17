@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 
 class Collapse extends Component {
+  constructor(){
+    //super kendimiz oluşturduğumuz constructor'ın React.Component içerisinde bulunan constructor içerisnde bulunan tüm özellikleri almamızı sağlıyor
+    super();
+  }
   render() {
     return (
       <div>
