@@ -4,6 +4,9 @@ class Collapse extends Component {
   constructor(){
     //super kendimiz oluşturduğumuz constructor'ın React.Component içerisinde bulunan constructor içerisnde bulunan tüm özellikleri almamızı sağlıyor
     super();
+    this.state = {
+      showContent:"test content"
+    }
   }
   render() {
     return (
@@ -21,7 +24,10 @@ class Collapse extends Component {
           </a>
         </p>
         <div class="collapse show" id={this.props.href}>
-          <div class="card card-body">{this.props.children}</div>
+          <div class="card card-body">
+            {this.props.children}
+            {this.state.showContent}
+          </div>
         </div>
       </div>
     );
