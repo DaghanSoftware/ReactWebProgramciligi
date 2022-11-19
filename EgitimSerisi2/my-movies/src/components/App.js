@@ -49,7 +49,7 @@ import MovieList from './MovieList';
             <SearchBar></SearchBar>
           </div>
         </div>
-        <MovieList></MovieList>
+        <MovieList movies={this.state.movies}></MovieList>
       </div>
     )
   }
