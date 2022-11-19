@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import SearchBar from './SearchBar';
+import MovieList from './MovieList';
  class App extends Component {
   state = {
     movies:[
@@ -41,7 +43,14 @@ import React, { Component } from 'react'
   }
   render() {
     return (
-      <div>App</div>
+      <div className='container'>
+        <div className='row'>
+          <div className='col-lg-12'>
+            <SearchBar></SearchBar>
+          </div>
+        </div>
+        <MovieList></MovieList>
+      </div>
     )
   }
 }
