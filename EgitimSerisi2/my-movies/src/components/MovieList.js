@@ -1,6 +1,11 @@
 import React from "react";
 
 const MovieList = (props)=> {
+
+  // function handleClick (e){
+  //   console.log(e);
+  // }
+
     return (
       <div>
         <div className="row">
@@ -18,6 +23,7 @@ const MovieList = (props)=> {
                   <div className="d-flex justify-content-between align-items-center">
                     <button
                       type="button"
+                      onClick={(event)=>props.deleteMovieProp(movie)}
                       className="btn btn-md btn-outline-danger"
                     >
                       Sil
