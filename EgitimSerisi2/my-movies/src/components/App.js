@@ -45,7 +45,11 @@ import MovieList from './MovieList';
     const newMovieList = this.state.movies.filter(
       m=>m.id !== movie.id
       );
-    this.setState({movies:newMovieList})
+      //Elimizde bir filim olmasaydı aşağıdaki setStatei kullanmak daha mantıklı olurdu ama elimizde film bilgisi mevcut
+    // this.setState({movies:newMovieList})
+    this.setState(state=>({
+      movies:newMovieList
+    }))
   }
   render() {
     return (
