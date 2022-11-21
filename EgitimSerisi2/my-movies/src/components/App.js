@@ -39,7 +39,8 @@ import MovieList from './MovieList';
         "overview": "When a mafia accountant is taken hostage on his beat, a police officer – wracked by guilt from a prior stint as a negotiator – must negotiate the standoff, even as his own family is held captive by the mob.",
         "id": 13
       }
-    ]
+    ],
+    searchQuery:""
   }
   deleteMovie= (movie) => {
     const newMovieList = this.state.movies.filter(
@@ -51,15 +52,24 @@ import MovieList from './MovieList';
       movies:newMovieList
     }))
   }
+  searchMovie = (event)=>{
+    // console.log(event.target.value);
+    this.setState({searchQuery:event.target.value})
+  }
   render() {
+    let filteredMovies = this.state.movies.filter(
+      (movie)=>{
+        return movie.name.toLowerCase().indexOf(this.state.searchQuery.toLowerCase()) !== -1
+      }
+    )
     return (
       <div className='container'>
         <div className='row'>
           <div className='col-lg-12'>
-            <SearchBar></SearchBar>
+            <SearchBar searchMovieProp={this.searchMovie}></SearchBar>
           </div>
         </div>
-        <MovieList movies={this.state.movies} deleteMovieProp={this.deleteMovie}></MovieList>
+        <MovieList movies={filteredMovies} deleteMovieProp={this.deleteMovie}></MovieList>
       </div>
     )
   }
