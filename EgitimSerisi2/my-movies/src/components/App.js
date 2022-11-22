@@ -20,7 +20,24 @@ import axios from 'axios';
     this.setState({movies:response.data});
   }
 
-  deleteMovie= (movie) => {
+  // deleteMovie= (movie) => {
+  //   const newMovieList = this.state.movies.filter(
+  //     m=>m.id !== movie.id
+  //     );
+  //     //Elimizde bir filim olmasaydı aşağıdaki setStatei kullanmak daha mantıklı olurdu ama elimizde film bilgisi mevcut
+  //   // this.setState({movies:newMovieList})
+  //   this.setState(state=>({
+  //     movies:newMovieList
+  //   }))
+  // }
+
+
+  //Fetch APİ
+  deleteMovie= async (movie) => {
+    const  baseUrl =`http://localhost:3002/movies/${movie.id}`;
+    await fetch(baseUrl,{
+      method:"DELETE"
+    })
     const newMovieList = this.state.movies.filter(
       m=>m.id !== movie.id
       );
