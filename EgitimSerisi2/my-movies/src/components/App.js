@@ -8,6 +8,7 @@ import axios from 'axios';
     searchQuery:""
   }
 
+  //Fetch Api Üzerinden Get Operasyonu
   // async componentDidMount (){
   //   const  baseUrl ="http://localhost:3002/movies";
   //   const response = await fetch(baseUrl);
