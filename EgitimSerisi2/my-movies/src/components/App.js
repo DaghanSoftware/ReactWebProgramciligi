@@ -6,6 +6,14 @@ import MovieList from './MovieList';
     movies:[],
     searchQuery:""
   }
+
+  async componentDidMount (){
+    const  baseUrl ="http://localhost:3002/movies";
+    const response = await fetch(baseUrl);
+    const data = await response.json();
+    this.setState({movies:data});
+  }
+
   deleteMovie= (movie) => {
     const newMovieList = this.state.movies.filter(
       m=>m.id !== movie.id
