@@ -1,17 +1,23 @@
 import React, { Component } from 'react'
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
+import axios from 'axios';
  class App extends Component {
   state = {
     movies:[],
     searchQuery:""
   }
 
+  // async componentDidMount (){
+  //   const  baseUrl ="http://localhost:3002/movies";
+  //   const response = await fetch(baseUrl);
+  //   const data = await response.json();
+  //   this.setState({movies:data});
+  // }
+
   async componentDidMount (){
-    const  baseUrl ="http://localhost:3002/movies";
-    const response = await fetch(baseUrl);
-    const data = await response.json();
-    this.setState({movies:data});
+    const response = await axios.get("http://localhost:3002/movies");
+    this.setState({movies:response.data});
   }
 
   deleteMovie= (movie) => {
