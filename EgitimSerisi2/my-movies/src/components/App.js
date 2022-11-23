@@ -10,8 +10,8 @@ import axios from 'axios';
 
 
   async componentDidMount (){
-    const response = await axios.get("http://localhost:3002/movies");
-    this.setState({movies:response.data});
+    const response = await axios.get("https://api.themoviedb.org/3/movie/popular?api_key=c0a0fda7ff0163ea73dcd60e82bc9afb&language=en-US&page=1");
+    console.log(response.data.results);
   }
 
 
