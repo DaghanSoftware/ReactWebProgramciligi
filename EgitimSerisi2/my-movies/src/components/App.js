@@ -11,9 +11,9 @@ import axios from 'axios';
 
 
   async componentDidMount (){
-    const response = await axios.get("https://api.themoviedb.org/3/movie/popular?api_key=c0a0fda7ff0163ea73dcd60e82bc9afb&language=en-US&page=1");
-    console.log(response.data.results);
-    this.setState({movies:response.data.results});
+    const response = await axios.get("https://api.themoviedb.org/3/list/8229363?api_key=c0a0fda7ff0163ea73dcd60e82bc9afb&language=en-US");
+    console.log(response.data.items);
+    this.setState({movies:response.data.items});
   }
 
 
@@ -34,7 +34,7 @@ import axios from 'axios';
   render() {
     let filteredMovies = this.state.movies.filter(
       (movie)=>{
-        return movie.title.toLowerCase().indexOf(this.state.searchQuery.toLowerCase()) !== -1
+          return movie.title !== -1
       }
     )
     return (
