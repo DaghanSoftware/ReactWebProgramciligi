@@ -18,7 +18,7 @@ import axios from 'axios';
 
 
   deleteMovie= async (movie) => {
-    axios.delete(`http://localhost:3002/movies/${movie.id}`)
+    axios.post(`https://api.themoviedb.org/3/list/8229363/remove_item?session_id=2cf4f64372ed6d9bd876d8ea1dd44de9c2a1956a&media_id=${movie.id}&api_key=c0a0fda7ff0163ea73dcd60e82bc9afb`)
     const newMovieList = this.state.movies.filter(
       m=>m.id !== movie.id
       );
