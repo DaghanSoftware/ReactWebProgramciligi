@@ -84,19 +84,22 @@ class App extends Component {
             path="/"
             element={
               <React.Fragment>
+
                 <div className="row">
                   <div className="col-lg-12">
                     <SearchBar searchMovieProp={this.searchMovie}></SearchBar>
                   </div>
                 </div>
+
                 <MovieList
                   movies={filteredMovies}
                   deleteMovieProp={this.deleteMovie}
                 />
+
               </React.Fragment>
             }
           />
-          <Route exact path="/add" element={<AddMovie />} />
+          <Route path="/add" element={<AddMovie />} />
         </Routes>
       </div>
     );
