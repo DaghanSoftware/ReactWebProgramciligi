@@ -36,18 +36,11 @@
       "id": 13
     },
     {
-      "name": "Semih Dağhannnn",
-      "rating": "6",
+      "name": "Semih Dağhan",
+      "rating": "10",
       "imageURL": "matrix2.jpg",
-      "overview": "s",
+      "overview": "12345",
       "id": 14
-    },
-    {
-      "name": "Semih Dağhansagsa",
-      "rating": "521",
-      "imageURL": "matrix2.jpgas",
-      "overview": "as",
-      "id": 15
     }
   ]
 }

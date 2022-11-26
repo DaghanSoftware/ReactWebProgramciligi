@@ -74,10 +74,10 @@ class App extends Component {
 
   //ADD MOVİE
   addMovie = async (movie) => {
-    await axios.post(`http://localhost:3002/movies/`,movie)
-    this.setState(state=>({
-      movie:state.movies.concat([movie])
-    }))
+    await axios.post(`http://localhost:3002/movies/`, movie);
+    this.setState((state) => ({
+      movie: state.movies.concat([movie]),
+    }));
     const response = await axios.get("http://localhost:3002/movies");
     this.setState({ movies: response.data });
   };
@@ -89,6 +89,8 @@ class App extends Component {
           .toLowerCase()
           .indexOf(this.state.searchQuery.toLowerCase()) !== -1
       );
+    }).sort((a,b)=>{
+      return a.id<b.id ? 1 : a.id >b.id?-1:0;
     });
     return (
       <div className="container">
@@ -98,7 +100,6 @@ class App extends Component {
             path="/"
             element={
               <React.Fragment>
-
                 <div className="row">
                   <div className="col-lg-12">
                     <SearchBar searchMovieProp={this.searchMovie}></SearchBar>
@@ -109,11 +110,19 @@ class App extends Component {
                   movies={filteredMovies}
                   deleteMovieProp={this.deleteMovie}
                 />
-
               </React.Fragment>
             }
           />
-          <Route path="/add" element={<AddMovie  onAddMovie={(movie)=> {this.addMovie(movie)}}/>} />
+          <Route
+            path="/add"
+            element={
+              <AddMovie
+                onAddMovie={(movie) => {
+                  this.addMovie(movie);
+                }}
+              />
+            }
+          />
         </Routes>
       </div>
     );
