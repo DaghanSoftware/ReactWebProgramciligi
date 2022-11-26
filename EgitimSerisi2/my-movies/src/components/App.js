@@ -78,6 +78,8 @@ class App extends Component {
     this.setState(state=>({
       movie:state.movies.concat([movie])
     }))
+    const response = await axios.get("http://localhost:3002/movies");
+    this.setState({ movies: response.data });
   };
 
   render() {

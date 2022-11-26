@@ -1,17 +1,19 @@
-import React, { Component } from "react";
+import React from 'react'
 import serialize from "form-serialize";
-
-class AddMovie extends Component {
-  handleFormSubmit = (event) => {
-    event.preventDefault();
-    var newMovie = serialize(event.target, { hash: true });
-    console.log(newMovie);
-    this.props.onAddMovie(newMovie);
-  };
-  render() {
-    return (
-      <div className="container">
-        <form id="example-form" className="mt-5" onSubmit={this.handleFormSubmit}>
+import {useNavigate} from 'react-router-dom';
+const AddMovie=(props)=> {
+    const navigate = useNavigate();
+    const handleFormSubmit = (event) => {
+        event.preventDefault();
+        var newMovie = serialize(event.target, { hash: true });
+        console.log(newMovie);
+        props.onAddMovie(newMovie);
+        navigate("/")
+      };
+      
+  return (
+    <div className="container">
+        <form id="example-form" className="mt-5" onSubmit={handleFormSubmit}>
           <input
             className="form-control"
             id="disabledInput"
@@ -46,13 +48,13 @@ class AddMovie extends Component {
             </div>
           </div>
           <input
+          
             type="submit"
             className="btn btn-danger btn-block"
             value="Add Movie"
           />
         </form>
       </div>
-    );
-  }
+  )
 }
 export default AddMovie;
