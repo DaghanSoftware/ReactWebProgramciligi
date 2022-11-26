@@ -21,6 +21,7 @@ class App extends Component {
   //   this.setState({movies:data});
   // }
 
+  //GET MOVİE
   async componentDidMount() {
     const response = await axios.get("http://localhost:3002/movies");
     this.setState({ movies: response.data });
@@ -54,7 +55,7 @@ class App extends Component {
   //   }))
   // }
 
-  //Axiox ile silme işlemi
+  //DELETE MOVİE
   deleteMovie = async (movie) => {
     axios.delete(`http://localhost:3002/movies/${movie.id}`);
     const newMovieList = this.state.movies.filter((m) => m.id !== movie.id);
@@ -64,10 +65,21 @@ class App extends Component {
       movies: newMovieList,
     }));
   };
+
+  //SEARCH MOVİE
   searchMovie = (event) => {
     // console.log(event.target.value);
     this.setState({ searchQuery: event.target.value });
   };
+
+  //ADD MOVİE
+  addMovie = async (movie) => {
+    await axios.post(`http://localhost:3002/movies/`,movie)
+    this.setState(state=>({
+      movie:state.movies.concat([movie])
+    }))
+  };
+
   render() {
     let filteredMovies = this.state.movies.filter((movie) => {
       return (
@@ -99,7 +111,7 @@ class App extends Component {
               </React.Fragment>
             }
           />
-          <Route path="/add" element={<AddMovie />} />
+          <Route path="/add" element={<AddMovie  onAddMovie={(movie)=> {this.addMovie(movie)}}/>} />
         </Routes>
       </div>
     );

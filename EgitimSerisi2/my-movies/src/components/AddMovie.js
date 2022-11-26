@@ -4,9 +4,9 @@ import serialize from "form-serialize";
 class AddMovie extends Component {
   handleFormSubmit = (event) => {
     event.preventDefault();
-    var obj = serialize(event.target, { hash: true });
-    console.log(obj);
-
+    var newMovie = serialize(event.target, { hash: true });
+    console.log(newMovie);
+    this.props.onAddMovie(newMovie);
   };
   render() {
     return (
