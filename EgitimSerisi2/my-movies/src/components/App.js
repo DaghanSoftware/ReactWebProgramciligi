@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import SearchBar from './SearchBar';
 import MovieList from './MovieList';
 import axios from 'axios';
+import AddMovie from './AddMovie';
  class App extends Component {
   state = {
     movies:[],
@@ -50,6 +51,7 @@ import axios from 'axios';
   //   }))
   // }
 
+  //Axiox ile silme işlemi
   deleteMovie= async (movie) => {
     axios.delete(`http://localhost:3002/movies/${movie.id}`)
     const newMovieList = this.state.movies.filter(
@@ -79,6 +81,7 @@ import axios from 'axios';
           </div>
         </div>
         <MovieList movies={filteredMovies} deleteMovieProp={this.deleteMovie}></MovieList>
+        <AddMovie></AddMovie>
       </div>
     )
   }
