@@ -1,18 +1,25 @@
+import axios from "axios";
 import React from "react";
 
-import { useNavigate } from "react-router-dom";
-
-const EditMovie = (props) => {
-  const navigate = useNavigate();
-
-  const handleFormSubmit = (event) => {
+class EditMovie extends React.Component {
+   state = {
+    name:"",
+    rating:"",
+    overview:"",
+    imageURL:""
+   }
+   async componentDidMount(){
+    await axios.get(`http://localhost:3002/movies/${id}`)
+   }
+   handleFormSubmit = (event) => {
     event.preventDefault();
-    navigate("/");
   };
+render(){
+
 
   return (
     <div className="container">
-      <form id="example-form" className="mt-5" onSubmit={handleFormSubmit}>
+      <form id="example-form" className="mt-5" onSubmit={this.handleFormSubmit}>
         <input
           className="form-control"
           id="disabledInput"
@@ -54,5 +61,6 @@ const EditMovie = (props) => {
       </form>
     </div>
   );
+}
 };
 export default EditMovie;

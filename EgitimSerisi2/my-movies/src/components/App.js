@@ -124,7 +124,7 @@ class App extends Component {
               />
             }
           />
-          <Route path="edit/:id" element={<EditMovie/>}></Route>
+          <Route path="/edit/:id" element={<EditMovie/>}></Route>
         </Routes>
       </div>
     );
