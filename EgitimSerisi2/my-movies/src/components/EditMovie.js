@@ -3,16 +3,28 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 export default function EditMovie() {
 
-       const initialState = () => "";
-    const [name, setValue] = useState(initialState);
-    const [rating, setValue] = useState(initialState);
-    const [overview, setValue] = useState(initialState);
-    const [imageURL, setValue] = useState(initialState);
-    const { id } = useParams();
-  useEffect(() => {
-    axios.get(`http://localhost:3002/movies/${id}`);
-  });
+  const [name, setName] = useState('');
+  const [rating, setrating] = useState('');
+  const [overview, setoverview] = useState('');
+  const [imageURL, setimageURL] = useState('');
+
+  const { id } = useParams();
+
+  async function fetchData() {
+    // const id = window.location.pathname.replace("/edit/", "")
+    // console.log(id)
+    const response = await axios.get(`http://localhost:3002/movies/${id}`);
+    const movie = response.data;
+    setName(movie.name);
+    setrating(movie.rating);
+    setoverview(movie.overview);
+    setimageURL(movie.imageURL);
+  }
   
+  useEffect(() => {
+    fetchData();
+  });
+
   return (
     <div className="container">
       <form id="example-form" className="mt-5">
@@ -26,17 +38,17 @@ export default function EditMovie() {
         <div className="row">
           <div className="form-group col-md-10">
             <label htmlFor="inputName">Name</label>
-            <input type="text" className="form-control" name="name" />
+            <input type="text" className="form-control" name="name" defaultValue={name}/>
           </div>
           <div className="form-group col-md-2">
             <label htmlFor="inputRating">Rating</label>
-            <input type="text" className="form-control" name="rating" />
+            <input type="text" className="form-control" name="rating" defaultValue={rating} />
           </div>
         </div>
         <div className="form-row">
           <div className="form-group col-md-12">
             <label htmlFor="inputImage">Image URL</label>
-            <input type="text" className="form-control" name="imageURL" />
+            <input type="text" className="form-control" name="imageURL" defaultValue={imageURL} />
           </div>
         </div>
         <div className="form-row">
@@ -46,6 +58,7 @@ export default function EditMovie() {
               className="form-control"
               name="overview"
               rows="5"
+              defaultValue={overview}
             ></textarea>
           </div>
         </div>
