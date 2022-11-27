@@ -1,25 +1,21 @@
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import React from "react";
+import { useParams } from "react-router-dom";
+export default function EditMovie() {
 
-class EditMovie extends React.Component {
-   state = {
-    name:"",
-    rating:"",
-    overview:"",
-    imageURL:""
-   }
-   async componentDidMount(){
-    await axios.get(`http://localhost:3002/movies/${id}`)
-   }
-   handleFormSubmit = (event) => {
-    event.preventDefault();
-  };
-render(){
-
-
+       const initialState = () => "";
+    const [name, setValue] = useState(initialState);
+    const [rating, setValue] = useState(initialState);
+    const [overview, setValue] = useState(initialState);
+    const [imageURL, setValue] = useState(initialState);
+    const { id } = useParams();
+  useEffect(() => {
+    axios.get(`http://localhost:3002/movies/${id}`);
+  });
+  
   return (
     <div className="container">
-      <form id="example-form" className="mt-5" onSubmit={this.handleFormSubmit}>
+      <form id="example-form" className="mt-5">
         <input
           className="form-control"
           id="disabledInput"
@@ -62,5 +58,3 @@ render(){
     </div>
   );
 }
-};
-export default EditMovie;
