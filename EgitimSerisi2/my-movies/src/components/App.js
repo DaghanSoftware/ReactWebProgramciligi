@@ -3,6 +3,7 @@ import SearchBar from "./SearchBar";
 import MovieList from "./MovieList";
 import axios from "axios";
 import AddMovie from "./AddMovie";
+import EditMovie from "./EditMovie";
 import {
   Routes, // instead of "Switch"
   Route,
@@ -123,6 +124,7 @@ class App extends Component {
               />
             }
           />
+          <Route path="edit/:id" element={<EditMovie/>}></Route>
         </Routes>
       </div>
     );
