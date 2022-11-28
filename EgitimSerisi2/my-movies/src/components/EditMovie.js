@@ -21,6 +21,11 @@ export default function EditMovie() {
     setimageURL(movie.imageURL);
   }
   
+  function onInputChange (e){
+    console.log(e.target.name);
+    console.log(e.target.value);
+  }
+
   useEffect(() => {
     fetchData();
   });
@@ -38,17 +43,17 @@ export default function EditMovie() {
         <div className="row">
           <div className="form-group col-md-10">
             <label htmlFor="inputName">Name</label>
-            <input type="text" className="form-control" name="name" defaultValue={name}/>
+            <input type="text" className="form-control" name="name" value={name} onChange={onInputChange}/>
           </div>
           <div className="form-group col-md-2">
             <label htmlFor="inputRating">Rating</label>
-            <input type="text" className="form-control" name="rating" defaultValue={rating} />
+            <input type="text" className="form-control" name="rating" value={rating} onChange={onInputChange} />
           </div>
         </div>
         <div className="form-row">
           <div className="form-group col-md-12">
             <label htmlFor="inputImage">Image URL</label>
-            <input type="text" className="form-control" name="imageURL" defaultValue={imageURL} />
+            <input type="text" className="form-control" name="imageURL" value={imageURL} onChange={onInputChange} />
           </div>
         </div>
         <div className="form-row">
@@ -58,7 +63,8 @@ export default function EditMovie() {
               className="form-control"
               name="overview"
               rows="5"
-              defaultValue={overview}
+              value={overview}
+              onChange={onInputChange}
             ></textarea>
           </div>
         </div>
