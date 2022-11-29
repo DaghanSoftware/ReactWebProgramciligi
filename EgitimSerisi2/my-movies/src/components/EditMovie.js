@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
-export default function EditMovie() {
+import { useParams,useNavigate } from "react-router-dom";
+const EditMovie=(props)=> {
   // const [name, setName] = useState('');
   // const [rating, setrating] = useState('');
   // const [overview, setoverview] = useState('');
   // const [imageURL, setimageURL] = useState('');
 
   const { id } = useParams();
+  const navigate = useNavigate();
   const [userState, setUserState] = useState({
     name: "",
     rating: "",
@@ -31,22 +32,46 @@ export default function EditMovie() {
     // setoverview.overview(movie.overview);
     // setimageURL.imageURL(movie.imageURL);
   }
-
-  const onInputChange = (e) => {
-    console.log(e.target.name);
-    setUserState({
-      ...userState,
-      [e.target.name]: e.target.value
-    });
-  };
-  
   useEffect(() => {
     fetchData();
   }, []);
 
+  const onInputChange = (e) => {
+    setUserState({
+      ...userState,
+      [e.target.name]: e.target.value
+    });
+    // this.setState({
+    //   [e.target.name]:e.target.value
+    // })
+  };
+
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    const {name,rating,overview,imageURL} =userState;
+    const updateMovie = {
+      name:name,
+      rating:rating,
+      overview:overview,
+      imageURL:imageURL
+    }
+
+    // var newMovie = serialize(event.target, { hash: true });
+    // const updateMovie = {
+    //   name:newMovie.name,
+    //   rating:newMovie.rating,
+    //   overview:newMovie.overview,
+    //   imageURL:newMovie.imageURL
+    // }
+    props.onEditMovie(id,updateMovie);
+    navigate("/")
+
+  };
+  
+
   return (
     <div className="container">
-      <form id="example-form" className="mt-5">
+      <form id="example-form" className="mt-5" onSubmit={handleFormSubmit}>
         <input
           className="form-control"
           id="disabledInput"
@@ -109,3 +134,4 @@ export default function EditMovie() {
     </div>
   );
 }
+export default EditMovie;

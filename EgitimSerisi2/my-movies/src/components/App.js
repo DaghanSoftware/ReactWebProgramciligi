@@ -83,16 +83,28 @@ class App extends Component {
     this.setState({ movies: response.data });
   };
 
+  //EDİT MOVİE
+  editMovie = async (id,movie) => {
+    await axios.put(`http://localhost:3002/movies/${id}`, movie);
+    this.setState((state) => ({
+      movie: state.movies.concat([movie]),
+    }));
+    const response = await axios.get("http://localhost:3002/movies");
+    this.setState({ movies: response.data });
+  };
+
   render() {
-    let filteredMovies = this.state.movies.filter((movie) => {
-      return (
-        movie.name
-          .toLowerCase()
-          .indexOf(this.state.searchQuery.toLowerCase()) !== -1
-      );
-    }).sort((a,b)=>{
-      return a.id<b.id ? 1 : a.id >b.id?-1:0;
-    });
+    let filteredMovies = this.state.movies
+      .filter((movie) => {
+        return (
+          movie.name
+            .toLowerCase()
+            .indexOf(this.state.searchQuery.toLowerCase()) !== -1
+        );
+      })
+      .sort((a, b) => {
+        return a.id < b.id ? 1 : a.id > b.id ? -1 : 0;
+      });
     return (
       <div className="container">
         <Routes>
@@ -124,7 +136,16 @@ class App extends Component {
               />
             }
           />
-          <Route path="/edit/:id" element={<EditMovie/>}></Route>
+          <Route
+            path="/edit/:id"
+            element={
+              <EditMovie
+                onEditMovie={(id,movie) => {
+                  this.editMovie(id,movie);
+                }}
+              />
+            }
+          ></Route>
         </Routes>
       </div>
     );
