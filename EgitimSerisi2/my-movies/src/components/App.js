@@ -23,7 +23,11 @@ class App extends Component {
   // }
 
   //GET MOVİE
-  async componentDidMount() {
+  componentDidMount() {
+    this.getMovies();
+  }
+
+  async getMovies(){
     const response = await axios.get("http://localhost:3002/movies");
     this.setState({ movies: response.data });
   }
@@ -79,18 +83,13 @@ class App extends Component {
     this.setState((state) => ({
       movie: state.movies.concat([movie]),
     }));
-    const response = await axios.get("http://localhost:3002/movies");
-    this.setState({ movies: response.data });
+    this.getMovies();
   };
 
   //EDİT MOVİE
   editMovie = async (id,movie) => {
     await axios.put(`http://localhost:3002/movies/${id}`, movie);
-    this.setState((state) => ({
-      movie: state.movies.concat([movie]),
-    }));
-    const response = await axios.get("http://localhost:3002/movies");
-    this.setState({ movies: response.data });
+    this.getMovies();
   };
 
   render() {
