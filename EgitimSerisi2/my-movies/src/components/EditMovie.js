@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 export default function EditMovie() {
-
   // const [name, setName] = useState('');
   // const [rating, setrating] = useState('');
   // const [overview, setoverview] = useState('');
@@ -13,8 +12,8 @@ export default function EditMovie() {
     name: "",
     rating: "",
     overview: "",
-    imageURL: ""
-  })
+    imageURL: "",
+  });
   async function fetchData() {
     // const id = window.location.pathname.replace("/edit/", "")
     // console.log(id)
@@ -23,27 +22,27 @@ export default function EditMovie() {
     setUserState({
       ...userState,
       name: movie.name,
-      rating:movie.rating,
-      overview:movie.overview,
-      imageURL:movie.imageURL
-     });
-    // userState.name(movie.name);
-    // userState.rating(movie.rating);
-    // userState.overview(movie.overview);
-    // userState.imageURL(movie.imageURL);
+      rating: movie.rating,
+      overview: movie.overview,
+      imageURL: movie.imageURL,
+    });
+    // setName.name(movie.name);
+    // setrating.rating(movie.rating);
+    // setoverview.overview(movie.overview);
+    // setimageURL.imageURL(movie.imageURL);
   }
 
-  const onInputChange = (e)=>{
+  const onInputChange = (e) => {
     console.log(e.target.name);
     setUserState({
-     ...userState,
-     [e.target.name]: e.target.value
+      ...userState,
+      [e.target.name]: e.target.value
     });
- }
-
+  };
+  
   useEffect(() => {
     fetchData();
-  });
+  }, []);
 
   return (
     <div className="container">
@@ -58,17 +57,35 @@ export default function EditMovie() {
         <div className="row">
           <div className="form-group col-md-10">
             <label htmlFor="inputName">Name</label>
-            <input type="text" className="form-control" name="name" value={userState.name} onChange={onInputChange}/>
+            <input
+              type="text"
+              className="form-control"
+              name="name"
+              value={userState.name}
+              onChange={onInputChange}
+            />
           </div>
           <div className="form-group col-md-2">
             <label htmlFor="inputRating">Rating</label>
-            <input type="text" className="form-control" name="rating" value={userState.rating} onChange={onInputChange} />
+            <input
+              type="text"
+              className="form-control"
+              name="rating"
+              value={userState.rating}
+              onChange={onInputChange}
+            />
           </div>
         </div>
         <div className="form-row">
           <div className="form-group col-md-12">
             <label htmlFor="inputImage">Image URL</label>
-            <input type="text" className="form-control" name="imageURL" value={userState.imageURL} onChange={onInputChange} />
+            <input
+              type="text"
+              className="form-control"
+              name="imageURL"
+              value={userState.imageURL}
+              onChange={onInputChange}
+            />
           </div>
         </div>
         <div className="form-row">
