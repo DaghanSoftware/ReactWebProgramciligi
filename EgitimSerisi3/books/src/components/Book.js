@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Book extends Component {
   render() {
     return (
-        <div class="col-lg-4 col-sm-6 mb-4 mb-sm-2">
+        <div className="col-lg-4 col-sm-6 mb-4 mb-sm-2">
           <div className="portfolio-item">
             <a
               className="portfolio-link"
