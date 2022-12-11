@@ -1,4 +1,5 @@
 import EmployeeList from "./components/EmployeeList.js";
+import EmployeeContextProvider  from "./contexts/EmployeeContext.js";
 function App() {
   return (
     <div className="App">
@@ -15,7 +16,10 @@ function App() {
 					</div>
 				</div>
 			</div>
-      <EmployeeList></EmployeeList>
+      <EmployeeContextProvider>
+      <EmployeeList/>
+      </EmployeeContextProvider>
+      
       <div className="clearfix">
 				<div className="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
 				<ul className="pagination">
