@@ -1,4 +1,4 @@
-import React, { useContext,useEffect,useState } from "react";
+import React, { useContext,useEffect,useState,useRef } from "react";
 import Employee from "./Employee";
 import { EmployeeContext } from "../contexts/EmployeeContext";
 import { Button,Modal, ModalBody, ModalFooter, ModalHeader, ModalTitle } from "react-bootstrap";
@@ -10,7 +10,10 @@ const EmployeeList = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  const myRef = useRef(null);
+  const onButtonClick =()=> {
+    myRef.current.focus();
+  }
   useEffect(()=>{
     handleClose();
   },[employees])
@@ -59,6 +62,8 @@ const EmployeeList = () => {
           </Button>
         </ModalFooter>
       </Modal>
+      <input ref={myRef} type="text"></input>
+      <button onClick={onButtonClick}>Focus Input</button>
     </React.Fragment>
   );
 };
