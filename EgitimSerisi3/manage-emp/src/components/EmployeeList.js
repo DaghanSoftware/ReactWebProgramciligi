@@ -1,4 +1,4 @@
-import React, { useContext,useState } from "react";
+import React, { useContext,useEffect,useState } from "react";
 import Employee from "./Employee";
 import { EmployeeContext } from "../contexts/EmployeeContext";
 import { Button,Modal, ModalBody, ModalFooter, ModalHeader, ModalTitle } from "react-bootstrap";
@@ -11,6 +11,10 @@ const EmployeeList = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  useEffect(()=>{
+    handleClose();
+  },[employees])
   return (
     <React.Fragment>
       <div className="table-title">
