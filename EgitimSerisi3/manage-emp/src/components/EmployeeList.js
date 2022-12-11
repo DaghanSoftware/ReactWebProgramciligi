@@ -1,11 +1,33 @@
-import { useContext } from "react";
+import React, { useContext,useState } from "react";
 import Employee from "./Employee";
 import { EmployeeContext } from "../contexts/EmployeeContext";
+import { Button,Modal, ModalBody, ModalFooter, ModalHeader, ModalTitle } from "react-bootstrap";
+import AddForm from "./AddForm";
 
 const EmployeeList = () => {
- const {employees} = useContext(EmployeeContext)
+  const { employees } = useContext(EmployeeContext);
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   return (
-    <div>
+    <React.Fragment>
+      <div className="table-title">
+        <div className="row">
+          <div className="col-sm-6">
+            <h2>
+              Manage <b>Employees</b>
+            </h2>
+          </div>
+          <div className="col-sm-6">
+            <Button onClick={handleShow} className="btn btn-success text-white" data-toggle="modal">
+              <i className="material-icons">&#xE147;</i>{" "}
+              <span>Add New Employee</span>
+            </Button>
+          </div>
+        </div>
+      </div>
       <table className="table table-striped table-hover">
         <thead>
           <tr>
@@ -17,10 +39,24 @@ const EmployeeList = () => {
           </tr>
         </thead>
         <tbody>
-          <Employee employees={employees}/>
+          <Employee employees={employees} />
         </tbody>
       </table>
-    </div>
+      <Modal show={show} onHide={handleClose} backdrop="static"
+        keyboard={false}>
+        <ModalHeader className="modal-header" closeButton>
+          <ModalTitle>Add Employee</ModalTitle>
+        </ModalHeader>
+        <ModalBody>
+            <AddForm></AddForm>
+          </ModalBody>
+        <ModalFooter>
+          <Button onClick={handleClose} variant="secondary">
+            Close Modal
+          </Button>
+        </ModalFooter>
+      </Modal>
+    </React.Fragment>
   );
 };
 
