@@ -1,13 +1,19 @@
 import React from "react";
-import { useContext, useState } from "react";
+import { useContext, useState,useEffect } from "react";
 import { EmployeeContext } from "../contexts/EmployeeContext";
-import { Button, Modal } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 import EditForm from "./EditForm";
 const Employee = ({ employees }) => {
   const { deleteEmployee } = useContext(EmployeeContext);
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
+  useEffect(()=>{
+    handleClose();
+  },[employees])
   return (
     <React.Fragment>
       <td>{employees.name}</td>
@@ -36,16 +42,19 @@ const Employee = ({ employees }) => {
       </td>
 
       <Modal
+      size="lg"
         show={show}
         onHide={handleClose}
         backdrop="static"
         keyboard={false}
+        aria-labelledby="example-modal-sizes-title-lg"
+      centered
       >
         <Modal.Header className="modal-header" closeButton>
           <Modal.Title>Edit Employee</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <EditForm></EditForm>
+          <EditForm theEmployee={employees}></EditForm>
         </Modal.Body>
         <Modal.Footer>
           <Button onClick={handleClose} variant="secondary">Close Modal</Button>
