@@ -1,21 +1,33 @@
 import React, { useContext,useEffect,useState,useRef } from "react";
 import Employee from "./Employee";
 import { EmployeeContext } from "../contexts/EmployeeContext";
+import Alert from 'react-bootstrap/Alert';
 import { Button,Modal } from "react-bootstrap";
 import AddForm from "./AddForm";
 
 const EmployeeList = () => {
   const { employees } = useContext(EmployeeContext);
 
+  const [showAlert,SetShowAlert]= useState(false);
   const [show, setShow] = useState(false);
+
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+  const handleShowAlert=()=>{
+    SetShowAlert(true);
+    setTimeout(() => {
+      SetShowAlert(false)
+    }, 2000);
+  };
   // const myRef = useRef(null);
   // const onButtonClick =()=> {
   //   myRef.current.focus();
   // }
   useEffect(()=>{
     handleClose();
+    return ()=>{
+      handleShowAlert();
+    }
   },[employees])
   return (
     <React.Fragment>
@@ -34,6 +46,14 @@ const EmployeeList = () => {
           </div>
         </div>
       </div>
+
+      <Alert show={showAlert} variant="success" onClose={() => SetShowAlert(false)} dismissible>
+        <Alert.Heading>Tebrikler İşlem Başarılı!</Alert.Heading>
+        <p>
+          İşlem başarıyla tamamlandı.
+        </p>
+      </Alert>
+
       <table className="table table-striped table-hover">
         <thead>
           <tr>
