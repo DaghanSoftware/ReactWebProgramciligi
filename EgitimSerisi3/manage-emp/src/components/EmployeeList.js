@@ -1,7 +1,7 @@
 import React, { useContext,useEffect,useState,useRef } from "react";
 import Employee from "./Employee";
 import { EmployeeContext } from "../contexts/EmployeeContext";
-import { Button,Modal, ModalBody, ModalFooter, ModalHeader, ModalTitle } from "react-bootstrap";
+import { Button,Modal } from "react-bootstrap";
 import AddForm from "./AddForm";
 
 const EmployeeList = () => {
@@ -10,10 +10,10 @@ const EmployeeList = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const myRef = useRef(null);
-  const onButtonClick =()=> {
-    myRef.current.focus();
-  }
+  // const myRef = useRef(null);
+  // const onButtonClick =()=> {
+  //   myRef.current.focus();
+  // }
   useEffect(()=>{
     handleClose();
   },[employees])
@@ -45,25 +45,31 @@ const EmployeeList = () => {
           </tr>
         </thead>
         <tbody>
-          <Employee employees={employees} />
+          {
+            employees.map((employee)=>(
+              <tr key={employee.id}>
+                <Employee employees={employee} />
+              </tr>
+            ))
+          }
         </tbody>
       </table>
       <Modal show={show} onHide={handleClose} backdrop="static"
         keyboard={false}>
-        <ModalHeader className="modal-header" closeButton>
-          <ModalTitle>Add Employee</ModalTitle>
-        </ModalHeader>
-        <ModalBody>
+        <Modal.Header className="modal-header" closeButton>
+          <Modal.Title>Add Employee</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
             <AddForm></AddForm>
-          </ModalBody>
-        <ModalFooter>
+          </Modal.Body>
+        <Modal.Footer>
           <Button onClick={handleClose} variant="secondary">
             Close Modal
           </Button>
-        </ModalFooter>
+        </Modal.Footer>
       </Modal>
-      <input ref={myRef} type="text"></input>
-      <button onClick={onButtonClick}>Focus Input</button>
+      {/* <input ref={myRef} type="text"></input>
+      <button onClick={onButtonClick}>Focus Input</button> */}
     </React.Fragment>
   );
 };
