@@ -85,7 +85,7 @@ const EmployeeList = () => {
         </tbody>
       </table>
 
-      <Pagination pages={totalPagesNum} setCurrentPage={setCurrentPage}></Pagination>
+      <Pagination pages={totalPagesNum} setCurrentPage={setCurrentPage} currentEmployees={currentEmployees.length}  employees={employees.length}></Pagination>
 
       <Modal show={show} onHide={handleClose} backdrop="static"
         keyboard={false}>
